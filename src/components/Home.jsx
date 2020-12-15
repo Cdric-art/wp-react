@@ -1,6 +1,7 @@
 import React from 'react';
 import inside from "../images/inside1.jpg";
 import inStreet from "../images/street6.jpg";
+import {NewsShop} from "./NewsShop";
 
 export const Home = () => {
 
@@ -52,6 +53,11 @@ export const Home = () => {
                 </p>
             </div>
         </div>
+        <div className="shop-news-title">
+            <h2>Nouveautés en boutique</h2>
+            <span className="tiret" />
+        </div>
+        <NewsShop />
     </section>
 
 }
