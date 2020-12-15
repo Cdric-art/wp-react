@@ -37,7 +37,13 @@ export const InSide = () => {
             </div>
         </section>
     } else {
-        return <Load />
+        return <section className="page-oeuvre">
+            <div className="container-text-card">
+                <h2>Réalisations en atelier</h2>
+                <span className="tiret" />
+            </div>
+            <Load />
+        </section>
     }
 
 }

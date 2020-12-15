@@ -1,9 +1,10 @@
 import React from 'react';
+import loading from '../images/loader.svg';
 
 export const Load = () => {
 
     return <div className="load">
-        <h2>Chargement...</h2>
+        <img src={loading} alt="Loading"/>
     </div>
 
 }
