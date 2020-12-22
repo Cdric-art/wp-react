@@ -1,5 +1,5 @@
 import React from 'react';
-import {useCallback, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import {Load} from "./load";
 
@@ -10,18 +10,16 @@ export const NewsShop = () => {
     const [news, setNews] = useState([])
     const [loaded, setLoaded] = useState(false)
 
-    const fetchData = useCallback(() => {
-        axios.get(`https://www.wp.cdricart-dev.fr/wp-json/wc/v3/products?orderby=date&per_page=3&consumer_key=${REACT_APP_CONSUMER_KEY}&consumer_secret=${REACT_APP_CONSUMER_SECRET}`)
-            .then((response) => {
-                setNews(response.data)
-                setLoaded(true);
-            })
-            .catch(error => console.log('Erreur ' + error))
-    }, []);
-
     useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios.get(
+                `https://www.wp.cdricart-dev.fr/wp-json/wc/v3/products?orderby=date&per_page=3&consumer_key=${REACT_APP_CONSUMER_KEY}&consumer_secret=${REACT_APP_CONSUMER_SECRET}`
+                );
+            setNews(result.data)
+            setLoaded(true)
+        };
         fetchData();
-    }, [fetchData]);
+    }, [])
 
     if (loaded) {
         return <div className="shop-news">
