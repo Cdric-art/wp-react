@@ -1,0 +1,10 @@
+AuthName "Site de démonstration - Accés limité"
+AuthType Basic
+AuthUserFile "/www/.htpasswd"
+Require valid-user
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off [OR]
+    RewriteCond %{HTTP_HOST} ^cdricart-dev\.fr [NC]
+    RewriteRule ^(.*)$ https://www.cdricart-dev.fr/$1 [R=301,L]
+</IfModule>
